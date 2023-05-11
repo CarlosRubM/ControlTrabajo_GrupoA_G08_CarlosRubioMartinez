@@ -30,6 +30,8 @@ public class MainFrame extends JFrame {
     private JTextField tfBuscarPais;
     private JButton calcularPaisButton;
     private JTextField tfResultadoPais;
+    private JButton btMetodo1;
+    private JTextField txMetodo;
 
     private FileInputStream fis;
     private ObjectInputStream entrada;
@@ -75,6 +77,7 @@ public class MainFrame extends JFrame {
                 tfEmisor.setText("");
                 tfId.setText("");
                 tfReceptor.setText("");
+                txMetodo.setText("");
 
 
             }
@@ -100,6 +103,17 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 tfResultadoPais.setText(Integer.toString(puerto.contador(tfBuscarPais.getText())));
+
+            }
+        });
+
+        btMetodo1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String pri = tfPrioridad.getText();
+                int priAux = Integer.parseInt(pri);
+                String s = puerto.mostrar_por_prioridad(priAux);
+                tfMostrar_id.setText(s);
             }
         });
     }
